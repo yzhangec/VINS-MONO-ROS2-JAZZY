@@ -6,6 +6,7 @@ set(CMAKE_CXX_STANDARD 14)
 add_compile_options(-Wextra -Wpedantic)
 
 find_package(ament_cmake REQUIRED)
+find_package(ament_index_cpp REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(rcpputils REQUIRED)
 find_package(std_msgs REQUIRED)
@@ -45,7 +46,7 @@ add_executable(pose_graph
     src/ThirdParty/VocabularyBinary.cpp
     )
 
-ament_target_dependencies(pose_graph rclcpp rcpputils std_msgs sensor_msgs visualization_msgs geometry_msgs nav_msgs tf2 tf2_ros cv_bridge camera_model image_transport)
+ament_target_dependencies(pose_graph ament_index_cpp rclcpp rcpputils std_msgs sensor_msgs visualization_msgs geometry_msgs nav_msgs tf2 tf2_ros cv_bridge camera_model image_transport)
 
 target_link_libraries(pose_graph ${OpenCV_LIBS} ${CERES_LIBRARIES}) 
 
